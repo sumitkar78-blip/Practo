@@ -1,0 +1,6 @@
+{
+  "name": "Practo Doctor Finder & Appointments",
+  "description": "Find verified doctors, explore top medical specialties, view genuine patient testimonials, and book in-clinic or video consultations seamlessly.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

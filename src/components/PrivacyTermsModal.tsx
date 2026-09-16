@@ -62,8 +62,8 @@ export const PrivacyTermsModal: React.FC<PrivacyTermsModalProps> = ({
         <div className="p-6 overflow-y-auto space-y-4 text-xs sm:text-sm text-slate-600 leading-relaxed flex-1">
           {type === 'privacy' ? (
             <>
-              <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-800 text-xs flex items-start gap-2">
-                <ShieldCheck className="w-4 h-4 shrink-0 mt-0.5 text-emerald-600" />
+              <div className="p-3 bg-blue-50 border border-blue-200 rounded-xl text-[#1e3a8a] text-xs flex items-start gap-2">
+                <ShieldCheck className="w-4 h-4 shrink-0 mt-0.5 text-[#0284c7]" />
                 <span>
                   <strong>Our Privacy Guarantee:</strong> Your medical consultation history, prescriptions, and health queries are protected with 256-bit encryption and are never sold to advertisers.
                 </span>
@@ -83,8 +83,8 @@ export const PrivacyTermsModal: React.FC<PrivacyTermsModalProps> = ({
             </>
           ) : (
             <>
-              <div className="p-3 bg-blue-50 border border-blue-200 rounded-xl text-blue-900 text-xs flex items-start gap-2">
-                <FileText className="w-4 h-4 shrink-0 mt-0.5 text-[#28328c]" />
+              <div className="p-3 bg-blue-50 border border-blue-200 rounded-xl text-[#1e3a8a] text-xs flex items-start gap-2">
+                <FileText className="w-4 h-4 shrink-0 mt-0.5 text-[#0284c7]" />
                 <span>
                   <strong>Transparent Healthcare Terms:</strong> By scheduling consultations through our platform, you agree to these fair usage and clinical guidelines.
                 </span>
@@ -109,7 +109,7 @@ export const PrivacyTermsModal: React.FC<PrivacyTermsModalProps> = ({
         <div className="bg-slate-50 px-6 py-3 border-t border-slate-200 flex items-center justify-end shrink-0">
           <button
             onClick={onClose}
-            className="px-5 py-2 rounded-xl bg-[#28328c] hover:bg-[#1f276f] text-white text-xs font-bold transition-colors cursor-pointer"
+            className="px-5 py-2 rounded-xl bg-gradient-to-r from-[#1e3a8a] to-[#0284c7] hover:from-[#172554] hover:to-[#0369a1] text-white text-xs font-bold transition-all cursor-pointer shadow-xs"
           >
             I Understand & Accept
           </button>

@@ -16,6 +16,7 @@ import { TrustStats } from './components/TrustStats';
 import { FaqSection } from './components/FaqSection';
 import { Footer } from './components/Footer';
 import { InfoModal, InfoModalType } from './components/InfoModal';
+import { MedicalWatermarks } from './components/MedicalWatermarks';
 import { DOCTORS } from './data/mockData';
 import { Doctor, Appointment, FilterState } from './types';
 import { CheckCircle2, AlertCircle, X } from 'lucide-react';
@@ -50,6 +51,7 @@ export default function App() {
   const [bookingMode, setBookingMode] = useState<'in_clinic' | 'video'>('in_clinic');
   const [detailDoctor, setDetailDoctor] = useState<Doctor | null>(null);
   const [infoModalType, setInfoModalType] = useState<InfoModalType>(null);
+  const [watermarkIntensity, setWatermarkIntensity] = useState<'subtle' | 'prominent'>('subtle');
 
   // Toast notifications
   const [toastMessage, setToastMessage] = useState<{ text: string; type: 'success' | 'info' } | null>(null);
@@ -68,6 +70,16 @@ export default function App() {
     setTimeout(() => {
       setToastMessage(null);
     }, 4000);
+  };
+
+  const handleToggleWatermark = () => {
+    setWatermarkIntensity((prev) => (prev === 'subtle' ? 'prominent' : 'subtle'));
+    showToast(
+      watermarkIntensity === 'subtle'
+        ? 'Medical Watermark set to Prominent mode'
+        : 'Medical Watermark set to Subtle mode',
+      'info'
+    );
   };
 
   // Keep city in filter state synced and reset area when city changes
@@ -301,18 +313,21 @@ export default function App() {
   }, [filters]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 selection:bg-[#14bef0]/20 selection:text-[#28328c]">
+    <div className="min-h-screen flex flex-col bg-[#f8fafc] text-slate-900 relative selection:bg-blue-600/20 selection:text-[#1e3a8a]">
       
+      {/* Background Medical Watermarks (Doctors photos & clinical equipment) */}
+      <MedicalWatermarks intensity={watermarkIntensity} />
+
       {/* Toast Alert */}
       {toastMessage && (
         <div className="fixed bottom-5 right-5 z-50 animate-in slide-in-from-bottom-5 duration-200">
-          <div className="bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-700 text-xs sm:text-sm">
+          <div className="bg-[#0f172a] text-white px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-700 text-xs sm:text-sm">
             {toastMessage.type === 'success' ? (
-              <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+              <CheckCircle2 className="w-5 h-5 text-sky-400 shrink-0" />
             ) : (
-              <AlertCircle className="w-5 h-5 text-cyan-400 shrink-0" />
+              <AlertCircle className="w-5 h-5 text-blue-400 shrink-0" />
             )}
-            <span className="font-medium">{toastMessage.text}</span>
+            <span className="font-medium text-slate-100">{toastMessage.text}</span>
             <button
               onClick={() => setToastMessage(null)}
               aria-label="Close notification"
@@ -332,10 +347,12 @@ export default function App() {
         onOpenAppointments={() => setIsAppointmentsOpen(true)}
         onNavigateToSection={scrollToSection}
         onSelectSpecialty={handleSelectSpecialty}
+        watermarkIntensity={watermarkIntensity}
+        onToggleWatermark={handleToggleWatermark}
       />
 
       {/* Main Page Sections */}
-      <main className="flex-1">
+      <main className="flex-1 relative z-10">
         {/* Hero Section with Dual Search Bar & Real Geolocation City Selector */}
         <HeroSearch
           selectedCity={selectedCity}

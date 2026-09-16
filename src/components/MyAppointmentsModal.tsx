@@ -77,11 +77,11 @@ export const MyAppointmentsModal: React.FC<MyAppointmentsModalProps> = ({
         {/* Header */}
         <div className="bg-slate-50 px-5 sm:px-6 py-4 border-b border-slate-200 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-[#28328c] text-white flex items-center justify-center font-bold">
-              <Calendar className="w-4 h-4" />
+            <div className="w-8 h-8 rounded-lg bg-[#1e3a8a] text-white flex items-center justify-center font-bold">
+              <Calendar className="w-4 h-4 text-sky-300" />
             </div>
             <div>
-              <h3 className="text-base font-bold text-slate-900">
+              <h3 className="text-base font-bold text-[#0f172a]">
                 My Appointments ({appointments.length})
               </h3>
               <p className="text-xs text-slate-500">
@@ -93,7 +93,7 @@ export const MyAppointmentsModal: React.FC<MyAppointmentsModalProps> = ({
             id="close-my-appointments-btn"
             onClick={onClose}
             aria-label="Close appointments modal"
-            className="p-1.5 rounded-full text-slate-400 hover:text-slate-700 hover:bg-slate-200/60 transition-colors cursor-pointer"
+            className="p-1.5 rounded-full text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -101,14 +101,14 @@ export const MyAppointmentsModal: React.FC<MyAppointmentsModalProps> = ({
 
         {/* Filter Tabs & Search Bar */}
         {appointments.length > 0 && (
-          <div className="px-5 sm:px-6 py-3 border-b border-slate-100 bg-white flex flex-col sm:flex-row gap-2 items-center justify-between shrink-0">
+          <div className="px-5 sm:px-6 py-3 border-b border-slate-200 bg-white flex flex-col sm:flex-row gap-2 items-center justify-between shrink-0">
             <div className="flex items-center bg-slate-100 p-1 rounded-xl w-full sm:w-auto">
               <button
                 type="button"
                 onClick={() => setFilterTab('all')}
                 className={`flex-1 sm:flex-none px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                   filterTab === 'all'
-                    ? 'bg-white text-[#28328c] shadow-xs'
+                    ? 'bg-white text-[#1e3a8a] shadow-xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -119,7 +119,7 @@ export const MyAppointmentsModal: React.FC<MyAppointmentsModalProps> = ({
                 onClick={() => setFilterTab('confirmed')}
                 className={`flex-1 sm:flex-none px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                   filterTab === 'confirmed'
-                    ? 'bg-white text-emerald-700 shadow-xs'
+                    ? 'bg-white text-[#0284c7] shadow-xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -155,8 +155,8 @@ export const MyAppointmentsModal: React.FC<MyAppointmentsModalProps> = ({
         <div className="p-5 sm:p-6 overflow-y-auto space-y-4 flex-1">
           {appointments.length === 0 ? (
             <div className="text-center py-12 px-4">
-              <div className="w-16 h-16 rounded-full bg-blue-50 text-[#28328c] flex items-center justify-center mx-auto mb-3">
-                <Calendar className="w-8 h-8 text-[#14bef0]" />
+              <div className="w-16 h-16 rounded-full bg-blue-50 text-[#1e3a8a] flex items-center justify-center mx-auto mb-3">
+                <Calendar className="w-8 h-8 text-[#0284c7]" />
               </div>
               <h4 className="text-base font-bold text-slate-900">No Appointments Booked Yet</h4>
               <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
@@ -168,7 +168,7 @@ export const MyAppointmentsModal: React.FC<MyAppointmentsModalProps> = ({
                   onClose();
                   onFindDoctors();
                 }}
-                className="mt-5 px-5 py-2.5 rounded-xl bg-[#28328c] hover:bg-[#1f276f] text-white text-xs font-bold transition-all shadow-xs cursor-pointer"
+                className="mt-5 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#1e3a8a] to-[#0284c7] hover:from-[#172554] hover:to-[#0369a1] text-white text-xs font-bold transition-all shadow-md shadow-blue-950/20 cursor-pointer"
               >
                 Find & Book Doctors Now
               </button>
@@ -185,7 +185,7 @@ export const MyAppointmentsModal: React.FC<MyAppointmentsModalProps> = ({
                 className={`rounded-2xl border p-4 sm:p-5 transition-all ${
                   apt.status === 'cancelled'
                     ? 'border-slate-200 bg-slate-50/70 opacity-70'
-                    : 'border-slate-200 bg-white shadow-xs hover:border-blue-200'
+                    : 'border-slate-200 bg-white shadow-xs hover:border-blue-300'
                 }`}
               >
                 {/* Doctor Row */}
@@ -214,8 +214,8 @@ export const MyAppointmentsModal: React.FC<MyAppointmentsModalProps> = ({
                     apt.status === 'cancelled'
                       ? 'bg-rose-50 text-rose-700 border border-rose-200'
                       : apt.mode === 'video'
-                      ? 'bg-cyan-50 text-cyan-800 border border-cyan-200'
-                      : 'bg-emerald-50 text-emerald-800 border border-emerald-200'
+                      ? 'bg-sky-50 text-sky-800 border border-sky-200'
+                      : 'bg-blue-50 text-[#1e3a8a] border border-blue-200'
                   }`}>
                     {apt.status === 'cancelled' ? (
                       'Cancelled'
@@ -240,7 +240,7 @@ export const MyAppointmentsModal: React.FC<MyAppointmentsModalProps> = ({
                     <strong className="text-slate-800 font-bold block">
                       {apt.date}
                     </strong>
-                    <span className="text-[#28328c] font-semibold">{apt.timeSlot}</span>
+                    <span className="text-[#1e3a8a] font-semibold">{apt.timeSlot}</span>
                   </div>
 
                   <div>
@@ -263,15 +263,15 @@ export const MyAppointmentsModal: React.FC<MyAppointmentsModalProps> = ({
                 </div>
 
                 {/* Location / Video link */}
-                <div className="bg-slate-50 p-2.5 rounded-xl text-xs text-slate-600 flex items-center justify-between">
+                <div className="bg-slate-50 p-2.5 rounded-xl text-xs text-slate-600 flex items-center justify-between border border-slate-200">
                   {apt.mode === 'in_clinic' ? (
                     <div className="flex items-center gap-2 truncate">
-                      <MapPin className="w-3.5 h-3.5 text-[#14bef0] shrink-0" />
+                      <MapPin className="w-3.5 h-3.5 text-[#0284c7] shrink-0" />
                       <span className="truncate">{apt.clinicName} — {apt.clinicAddress}</span>
                     </div>
                   ) : (
-                    <div className="flex items-center gap-2 text-[#28328c] font-medium">
-                      <Video className="w-3.5 h-3.5 text-[#14bef0] shrink-0" />
+                    <div className="flex items-center gap-2 text-[#1e3a8a] font-medium">
+                      <Video className="w-3.5 h-3.5 text-[#0284c7] shrink-0" />
                       <span>HD Video Consultation Room will open 10 mins prior to slot</span>
                     </div>
                   )}
@@ -301,7 +301,7 @@ export const MyAppointmentsModal: React.FC<MyAppointmentsModalProps> = ({
           {onResetDemoAppointments && (
             <button
               onClick={onResetDemoAppointments}
-              className="text-[11px] font-bold text-slate-500 hover:text-slate-800 hover:underline cursor-pointer"
+              className="text-[11px] font-bold text-[#1e3a8a] hover:text-[#0f172a] hover:underline cursor-pointer"
             >
               Reset Demo Appointments
             </button>

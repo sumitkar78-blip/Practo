@@ -50,14 +50,14 @@ export const DoctorDetailModal: React.FC<DoctorDetailModalProps> = ({
         {/* Header Bar */}
         <div className="bg-slate-50 px-6 py-4 border-b border-slate-200 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-2">
-            <span className="text-xs font-bold text-[#28328c] uppercase tracking-wider">
+            <span className="text-xs font-bold text-[#1e3a8a] uppercase tracking-wider">
               Practo Verified Medical Profile
             </span>
           </div>
           <button
             onClick={onClose}
             aria-label="Close doctor details"
-            className="p-1.5 rounded-full text-slate-400 hover:text-slate-700 hover:bg-slate-200/60 transition-colors cursor-pointer"
+            className="p-1.5 rounded-full text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -78,7 +78,7 @@ export const DoctorDetailModal: React.FC<DoctorDetailModalProps> = ({
               {doctor.isPractoVerified && (
                 <div 
                   title="Practo Verified Practitioner"
-                  className="absolute -bottom-2 -right-2 bg-emerald-600 text-white rounded-full p-1.5 shadow-xs"
+                  className="absolute -bottom-2 -right-2 bg-[#0284c7] text-white rounded-full p-1.5 shadow-xs"
                 >
                   <ShieldCheck className="w-4 h-4" />
                 </div>
@@ -88,10 +88,10 @@ export const DoctorDetailModal: React.FC<DoctorDetailModalProps> = ({
             <div className="space-y-2 flex-1">
               <div>
                 <div className="flex items-center gap-2 flex-wrap">
-                  <h3 id="doctor-modal-title" className="text-xl sm:text-2xl font-black text-[#28328c]">
+                  <h3 id="doctor-modal-title" className="text-xl sm:text-2xl font-black text-[#0f172a]">
                     {doctor.name}
                   </h3>
-                  <span className="px-2 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                  <span className="px-2 py-0.5 rounded-full text-[11px] font-bold bg-blue-50 text-[#0284c7] border border-blue-200">
                     Verified
                   </span>
                 </div>
@@ -104,7 +104,7 @@ export const DoctorDetailModal: React.FC<DoctorDetailModalProps> = ({
               </div>
 
               <div className="flex items-center gap-3 pt-1">
-                <div className="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-emerald-600 text-white text-xs font-bold">
+                <div className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[#0284c7] text-white text-xs font-bold">
                   <ThumbsUp className="w-3.5 h-3.5" />
                   <span>{doctor.rating}%</span>
                 </div>
@@ -121,7 +121,7 @@ export const DoctorDetailModal: React.FC<DoctorDetailModalProps> = ({
 
           {/* About & Bio */}
           <div>
-            <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
+            <h4 className="text-xs font-bold text-[#1e3a8a] uppercase tracking-wider mb-2">
               About Doctor
             </h4>
             <p className="text-slate-700 leading-relaxed">
@@ -131,7 +131,7 @@ export const DoctorDetailModal: React.FC<DoctorDetailModalProps> = ({
 
           {/* Clinic & Location Info */}
           <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200 space-y-3">
-            <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+            <h4 className="text-xs font-bold text-[#1e3a8a] uppercase tracking-wider">
               Primary Clinic & Practice
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
@@ -145,7 +145,7 @@ export const DoctorDetailModal: React.FC<DoctorDetailModalProps> = ({
               <div>
                 <span className="text-slate-400 block font-semibold">Timings</span>
                 <strong className="text-slate-800 block">{doctor.clinicTimings}</strong>
-                <span className="text-emerald-700 font-semibold block mt-0.5">
+                <span className="text-[#0369a1] font-semibold block mt-0.5">
                   Available Days: {doctor.availableDays.join(', ')}
                 </span>
               </div>
@@ -154,16 +154,16 @@ export const DoctorDetailModal: React.FC<DoctorDetailModalProps> = ({
 
           {/* Services & Treatments Offered */}
           <div>
-            <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
+            <h4 className="text-xs font-bold text-[#1e3a8a] uppercase tracking-wider mb-2">
               Services & Procedures Handled
             </h4>
             <div className="flex flex-wrap gap-2">
               {doctor.services.map((service) => (
                 <span
                   key={service}
-                  className="px-3 py-1.5 rounded-xl bg-blue-50 text-[#28328c] text-xs font-semibold border border-blue-100 flex items-center gap-1.5"
+                  className="px-3 py-1.5 rounded-xl bg-blue-50/80 text-[#1e3a8a] text-xs font-semibold border border-blue-200/80 flex items-center gap-1.5"
                 >
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#14bef0]" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#0284c7]" />
                   {service}
                 </span>
               ))}
@@ -172,7 +172,7 @@ export const DoctorDetailModal: React.FC<DoctorDetailModalProps> = ({
 
           {/* Education & Qualifications */}
           <div>
-            <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
+            <h4 className="text-xs font-bold text-[#1e3a8a] uppercase tracking-wider mb-2">
               Education & Fellowships
             </h4>
             <div className="space-y-1.5">
@@ -187,7 +187,7 @@ export const DoctorDetailModal: React.FC<DoctorDetailModalProps> = ({
 
           {/* Languages Spoken */}
           <div>
-            <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
+            <h4 className="text-xs font-bold text-[#1e3a8a] uppercase tracking-wider mb-2">
               Languages Spoken
             </h4>
             <div className="flex items-center gap-2 text-xs text-slate-700">
@@ -207,7 +207,7 @@ export const DoctorDetailModal: React.FC<DoctorDetailModalProps> = ({
             </div>
             <div className="border-l border-slate-200 pl-4">
               <span className="text-slate-400 block font-medium">Video Fee:</span>
-              <strong className="text-sm font-bold text-[#28328c]">₹{doctor.videoConsultFee}</strong>
+              <strong className="text-sm font-bold text-[#1e3a8a]">₹{doctor.videoConsultFee}</strong>
             </div>
           </div>
 
@@ -219,9 +219,9 @@ export const DoctorDetailModal: React.FC<DoctorDetailModalProps> = ({
                   onClose();
                   onBook(doctor, 'video');
                 }}
-                className="flex-1 sm:flex-initial px-4 py-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-[#28328c] font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer"
+                className="flex-1 sm:flex-initial px-4 py-2.5 rounded-xl border border-slate-200 bg-white hover:bg-blue-50 text-[#1e3a8a] font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer"
               >
-                <Video className="w-4 h-4 text-[#14bef0]" />
+                <Video className="w-4 h-4 text-[#0284c7]" />
                 <span>Video Consult</span>
               </button>
             )}
@@ -233,9 +233,9 @@ export const DoctorDetailModal: React.FC<DoctorDetailModalProps> = ({
                   onClose();
                   onBook(doctor, 'in_clinic');
                 }}
-                className="flex-1 sm:flex-initial px-5 py-2.5 rounded-xl bg-[#28328c] hover:bg-[#1f276f] text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-md shadow-blue-900/15 cursor-pointer"
+                className="flex-1 sm:flex-initial px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#1e3a8a] to-[#0284c7] hover:from-[#172554] hover:to-[#0369a1] text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-md shadow-blue-950/20 cursor-pointer"
               >
-                <Calendar className="w-4 h-4 text-cyan-300" />
+                <Calendar className="w-4 h-4 text-sky-200" />
                 <span>Book Clinic Visit</span>
               </button>
             )}

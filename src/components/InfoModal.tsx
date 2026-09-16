@@ -33,10 +33,10 @@ export const InfoModal: React.FC<InfoModalProps> = ({ type, onClose }) => {
         {/* Header */}
         <div className="bg-slate-50 px-6 py-4 border-b border-slate-200 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-2">
-            {type === 'privacy' && <ShieldCheck className="w-5 h-5 text-emerald-600" />}
-            {type === 'terms' && <FileText className="w-5 h-5 text-[#28328c]" />}
-            {type === 'directory' && <Building2 className="w-5 h-5 text-[#14bef0]" />}
-            <h3 className="text-base font-bold text-slate-900">
+            {type === 'privacy' && <ShieldCheck className="w-5 h-5 text-[#0284c7]" />}
+            {type === 'terms' && <FileText className="w-5 h-5 text-[#1e3a8a]" />}
+            {type === 'directory' && <Building2 className="w-5 h-5 text-[#0369a1]" />}
+            <h3 className="text-base font-bold text-[#0f172a]">
               {type === 'privacy' && 'Practo Privacy & Health Data Policy'}
               {type === 'terms' && 'Terms & Conditions of Service'}
               {type === 'directory' && 'National Healthcare Practitioner Directory'}
@@ -45,7 +45,7 @@ export const InfoModal: React.FC<InfoModalProps> = ({ type, onClose }) => {
           <button
             onClick={onClose}
             aria-label="Close modal"
-            className="p-1.5 rounded-full text-slate-400 hover:text-slate-700 hover:bg-slate-200/60 transition-colors cursor-pointer"
+            className="p-1.5 rounded-full text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -55,7 +55,7 @@ export const InfoModal: React.FC<InfoModalProps> = ({ type, onClose }) => {
         <div className="p-6 overflow-y-auto space-y-4 text-xs sm:text-sm text-slate-600 leading-relaxed">
           {type === 'privacy' && (
             <>
-              <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 text-emerald-900 mb-4">
+              <div className="bg-blue-50 border border-blue-200 rounded-2xl p-4 text-[#1e3a8a] mb-4">
                 <strong className="block text-sm font-bold mb-1">Your Medical Privacy is Our Foundation</strong>
                 <span>Practo adheres strictly to HIPAA standards, ISO 27001 data security, and Indian Digital Personal Data Protection guidelines.</span>
               </div>
@@ -70,7 +70,7 @@ export const InfoModal: React.FC<InfoModalProps> = ({ type, onClose }) => {
 
           {type === 'terms' && (
             <>
-              <div className="bg-blue-50 border border-blue-200 rounded-2xl p-4 text-blue-900 mb-4">
+              <div className="bg-sky-50 border border-sky-200 rounded-2xl p-4 text-sky-900 mb-4">
                 <strong className="block text-sm font-bold mb-1">Fair & Transparent Patient Terms</strong>
                 <span>Clear guidelines guaranteeing zero unexpected fees and patient-first flexibility.</span>
               </div>
@@ -85,7 +85,7 @@ export const InfoModal: React.FC<InfoModalProps> = ({ type, onClose }) => {
 
           {type === 'directory' && (
             <>
-              <div className="bg-sky-50 border border-sky-200 rounded-2xl p-4 text-sky-900 mb-4">
+              <div className="bg-blue-50/70 border border-blue-200 rounded-2xl p-4 text-[#1e3a8a] mb-4">
                 <strong className="block text-sm font-bold mb-1">Search 100,000+ Verified Doctors</strong>
                 <span>Our directory indexes top medical specialists, super-specialists, and NABH-accredited clinics across 70+ Indian cities.</span>
               </div>
@@ -109,7 +109,7 @@ export const InfoModal: React.FC<InfoModalProps> = ({ type, onClose }) => {
         <div className="bg-slate-50 px-6 py-3.5 border-t border-slate-200 flex items-center justify-end">
           <button
             onClick={onClose}
-            className="px-4 py-2 rounded-xl bg-[#28328c] text-white text-xs font-bold hover:bg-[#1f276f] transition-colors cursor-pointer"
+            className="px-5 py-2 rounded-xl bg-gradient-to-r from-[#1e3a8a] to-[#0284c7] hover:from-[#172554] hover:to-[#0369a1] text-white text-xs font-bold transition-all cursor-pointer shadow-sm"
           >
             I Understand
           </button>

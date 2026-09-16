@@ -85,22 +85,22 @@ export const ServiceCategories: React.FC<ServiceCategoriesProps> = ({
   };
 
   return (
-    <section id="specialties-section" className="py-14 bg-white border-b border-slate-200/80">
+    <section id="specialties-section" className="py-14 bg-white/95 backdrop-blur-xs border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Top Service Categories Grid */}
         <div className="mb-14">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-6">
             <div>
-              <span className="text-xs font-bold text-[#14bef0] uppercase tracking-wider">
-                Comprehensive Healthcare
+              <span className="text-xs font-bold text-[#0284c7] uppercase tracking-wider">
+                Comprehensive Healthcare Services
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1">
-                Consult Top Doctors Across Healthcare Services
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0f172a] tracking-tight mt-1">
+                Consult Top Doctors Across Healthcare Disciplines
               </h2>
             </div>
             <p className="text-sm text-slate-500 mt-2 md:mt-0 max-w-md">
-              From emergency online video calls to confirmed clinic walk-ins and full surgery guidance.
+              From emergency online video calls to confirmed clinic walk-ins and full hospital surgical guidance.
             </p>
           </div>
 
@@ -110,24 +110,24 @@ export const ServiceCategories: React.FC<ServiceCategoriesProps> = ({
                 key={service.id}
                 id={`service-card-${service.id}`}
                 onClick={() => onSelectServiceCard(service.id)}
-                className="group relative bg-white rounded-2xl p-5 border border-slate-200 shadow-xs hover:shadow-lg hover:border-blue-300 transition-all cursor-pointer flex flex-col justify-between overflow-hidden"
+                className="group relative bg-white rounded-2xl p-5 border border-slate-200 shadow-2xs hover:shadow-xl hover:border-blue-300 transition-all cursor-pointer flex flex-col justify-between overflow-hidden"
               >
                 {/* Top decorative gradient bar */}
                 <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${service.bgGradient}`}></div>
 
                 <div>
                   <div className="flex items-start justify-between mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-[#28328c] group-hover:scale-110 group-hover:bg-blue-50 transition-all">
+                    <div className="w-12 h-12 rounded-xl bg-blue-50/70 border border-blue-100 flex items-center justify-center text-[#1e3a8a] group-hover:scale-110 group-hover:bg-blue-100 transition-all">
                       {getIcon(service.icon)}
                     </div>
                     {service.tag && (
-                      <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-sky-50 text-[#28328c] border border-sky-200">
+                      <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-blue-50 text-[#1e3a8a] border border-blue-200">
                         {service.tag}
                       </span>
                     )}
                   </div>
 
-                  <h3 className="text-base font-bold text-slate-900 group-hover:text-[#28328c] transition-colors">
+                  <h3 className="text-base font-bold text-slate-900 group-hover:text-[#1e3a8a] transition-colors">
                     {service.title}
                   </h3>
                   <p className="text-xs text-slate-500 mt-1.5 leading-relaxed">
@@ -135,7 +135,7 @@ export const ServiceCategories: React.FC<ServiceCategoriesProps> = ({
                   </p>
                 </div>
 
-                <div className="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-[#28328c] group-hover:text-[#14bef0]">
+                <div className="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-[#1e3a8a] group-hover:text-[#0284c7]">
                   <span>{service.actionText}</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </div>
@@ -148,10 +148,10 @@ export const ServiceCategories: React.FC<ServiceCategoriesProps> = ({
         <div>
           <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6">
             <div>
-              <span className="text-xs font-bold text-[#28328c] uppercase tracking-wider">
+              <span className="text-xs font-bold text-[#0284c7] uppercase tracking-wider">
                 Browse By Medical Specialty
               </span>
-              <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight mt-0.5">
+              <h2 className="text-2xl font-extrabold text-[#0f172a] tracking-tight mt-0.5">
                 Book an Appointment for Any Health Concern
               </h2>
             </div>
@@ -159,7 +159,7 @@ export const ServiceCategories: React.FC<ServiceCategoriesProps> = ({
               <button
                 id="clear-specialty-selection-btn"
                 onClick={() => onSelectSpecialty('')}
-                className="mt-2 sm:mt-0 text-xs font-bold text-[#14bef0] hover:underline cursor-pointer"
+                className="mt-2 sm:mt-0 text-xs font-bold text-[#0284c7] hover:underline cursor-pointer"
               >
                 Reset Specialty Filter (Showing: {selectedSpecialty})
               </button>
@@ -176,8 +176,8 @@ export const ServiceCategories: React.FC<ServiceCategoriesProps> = ({
                   onClick={() => onSelectSpecialty(isSelected ? '' : spec.name)}
                   className={`group p-4 rounded-2xl border transition-all cursor-pointer relative flex flex-col justify-between ${
                     isSelected
-                      ? 'border-[#28328c] bg-blue-50/60 shadow-md ring-2 ring-blue-500/20'
-                      : 'border-slate-200 bg-white hover:border-slate-300 hover:shadow-md'
+                      ? 'border-[#1e3a8a] bg-blue-50/70 shadow-md ring-2 ring-blue-500/20'
+                      : 'border-slate-200 bg-white hover:border-blue-200 hover:shadow-md'
                   }`}
                 >
                   <div>
@@ -185,12 +185,12 @@ export const ServiceCategories: React.FC<ServiceCategoriesProps> = ({
                       <div className={`w-11 h-11 rounded-xl flex items-center justify-center transition-all ${getSpecialtyBadgeStyle(spec.accentColor)}`}>
                         {getIcon(spec.icon)}
                       </div>
-                      <span className="text-[11px] font-semibold text-slate-500">
+                      <span className="text-[11px] font-semibold text-slate-400">
                         {spec.doctorCount}+ Docs
                       </span>
                     </div>
 
-                    <h3 className="text-sm font-bold text-slate-900 group-hover:text-[#28328c] transition-colors">
+                    <h3 className="text-sm font-bold text-slate-900 group-hover:text-[#1e3a8a] transition-colors">
                       {spec.name}
                     </h3>
                     <p className="text-xs text-slate-500 mt-1 line-clamp-2">
@@ -203,16 +203,16 @@ export const ServiceCategories: React.FC<ServiceCategoriesProps> = ({
                     {spec.popularSymptoms.slice(0, 2).map((symptom) => (
                       <span
                         key={symptom}
-                        className="text-[10px] font-medium bg-slate-100 text-slate-600 px-2 py-0.5 rounded-md"
+                        className="text-[10px] font-medium bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md"
                       >
                         {symptom}
                       </span>
                     ))}
                   </div>
 
-                  <div className="mt-3 flex items-center justify-between text-[11px] font-bold text-slate-400 group-hover:text-[#28328c] pt-1">
+                  <div className="mt-3 flex items-center justify-between text-[11px] font-bold text-slate-400 group-hover:text-[#1e3a8a] pt-1">
                     <span>{isSelected ? 'Selected' : 'Find Specialists'}</span>
-                    <ChevronRight className={`w-3.5 h-3.5 transition-transform ${isSelected ? 'rotate-90 text-[#28328c]' : 'group-hover:translate-x-0.5'}`} />
+                    <ChevronRight className={`w-3.5 h-3.5 transition-transform ${isSelected ? 'rotate-90 text-[#1e3a8a]' : 'group-hover:translate-x-0.5'}`} />
                   </div>
                 </div>
               );

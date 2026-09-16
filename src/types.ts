@@ -80,6 +80,8 @@ export interface Appointment {
   doctorImage: string;
   clinicName: string;
   clinicAddress: string;
+  city?: string;
+  area?: string;
   mode: 'in_clinic' | 'video';
   date: string; // YYYY-MM-DD
   timeSlot: string; // e.g. "10:30 AM"

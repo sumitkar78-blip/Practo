@@ -9,7 +9,9 @@ import {
   Video, 
   ShieldCheck, 
   PhoneCall, 
-  UserCheck 
+  UserCheck,
+  Eye,
+  Activity
 } from 'lucide-react';
 import { CITIES } from '../data/mockData';
 import { Appointment } from '../types';
@@ -21,6 +23,8 @@ interface NavbarProps {
   onOpenAppointments: () => void;
   onNavigateToSection: (sectionId: string) => void;
   onSelectSpecialty: (specialtyName: string) => void;
+  watermarkIntensity?: 'subtle' | 'prominent';
+  onToggleWatermark?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -30,6 +34,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenAppointments,
   onNavigateToSection,
   onSelectSpecialty,
+  watermarkIntensity = 'subtle',
+  onToggleWatermark,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [cityDropdownOpen, setCityDropdownOpen] = useState(false);
@@ -60,30 +66,40 @@ export const Navbar: React.FC<NavbarProps> = ({
   ).length;
 
   return (
-    <header className="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-xs">
-      {/* Top emergency announcement bar */}
-      <div className="bg-slate-900 text-slate-200 text-xs py-1.5 px-4">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs">
+      {/* Top clinical announcement bar */}
+      <div className="bg-[#0f172a] text-slate-200 text-xs py-1.5 px-4 border-b border-slate-800">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1 text-emerald-400 font-medium">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              24/7 Medical Care
+            <span className="inline-flex items-center gap-1.5 text-sky-400 font-semibold">
+              <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+              Verified Medical Care
             </span>
-            <span className="hidden sm:inline text-slate-400">|</span>
-            <span className="hidden sm:inline text-slate-300">Instant video consultations in under 60 seconds</span>
+            <span className="hidden sm:inline text-slate-700">|</span>
+            <span className="hidden sm:inline text-slate-300">Instant video consultations & confirmed clinic appointments</span>
           </div>
           <div className="flex items-center gap-4 text-xs">
+            {onToggleWatermark && (
+              <button
+                onClick={onToggleWatermark}
+                className="hidden sm:flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-slate-800 hover:bg-slate-700 text-sky-300 transition-colors text-[11px] font-medium cursor-pointer border border-slate-700"
+                title="Toggle medical equipment & doctor photo watermark visibility"
+              >
+                <Eye className="w-3 h-3 text-sky-400" />
+                <span>Watermark: {watermarkIntensity === 'prominent' ? 'Prominent' : 'Subtle'}</span>
+              </button>
+            )}
             <span className="flex items-center gap-1 text-slate-300">
-              <PhoneCall className="w-3.5 h-3.5 text-cyan-400" />
-              Emergency: <strong className="text-white">1800-425-7228</strong>
+              <PhoneCall className="w-3.5 h-3.5 text-sky-400" />
+              Helpline: <strong className="text-white">1800-425-7228</strong>
             </span>
-            <span className="hidden md:inline text-slate-400">|</span>
+            <span className="hidden md:inline text-slate-700">|</span>
             <button 
               id="top-security-badge"
               onClick={() => onNavigateToSection('trust-stats')}
-              className="hidden md:inline text-slate-300 hover:text-white transition-colors cursor-pointer"
+              className="hidden md:inline text-sky-300 hover:text-white transition-colors cursor-pointer"
             >
-              100% Verified Practitioners
+              100% Medical Council Verified
             </button>
           </div>
         </div>
@@ -98,18 +114,18 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               id="brand-logo-btn"
               onClick={() => onNavigateToSection('hero-section')}
-              className="flex items-center gap-2.5 text-left cursor-pointer group"
+              className="flex items-center gap-3 text-left cursor-pointer group"
             >
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#28328c] to-[#14bef0] flex items-center justify-center text-white shadow-md shadow-blue-900/15 group-hover:scale-105 transition-transform">
-                <Stethoscope className="w-5 h-5" />
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#1e3a8a] via-[#1e40af] to-[#0284c7] flex items-center justify-center text-white shadow-md shadow-blue-950/20 group-hover:scale-105 transition-transform">
+                <Stethoscope className="w-5 h-5 text-sky-100" />
               </div>
               <div className="leading-tight">
                 <div className="flex items-center gap-1">
-                  <span className="text-2xl font-black tracking-tight text-[#28328c]">practo</span>
-                  <span className="w-2 h-2 rounded-full bg-[#14bef0]"></span>
+                  <span className="text-2xl font-black tracking-tight text-[#1e3a8a]">practo</span>
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#0284c7] animate-pulse"></span>
                 </div>
-                <span className="text-[10px] font-semibold tracking-wider text-slate-500 uppercase block -mt-0.5">
-                  Doctor Care
+                <span className="text-[10px] font-bold tracking-widest text-[#0369a1] uppercase block -mt-0.5">
+                  Clinical Care
                 </span>
               </div>
             </button>
@@ -119,15 +135,15 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 id="city-picker-btn"
                 onClick={() => setCityDropdownOpen(!cityDropdownOpen)}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 text-xs font-semibold text-slate-700 transition-colors cursor-pointer"
+                className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-xs font-bold text-[#1e3a8a] transition-colors cursor-pointer"
               >
-                <MapPin className="w-3.5 h-3.5 text-[#14bef0]" />
+                <MapPin className="w-3.5 h-3.5 text-[#0284c7]" />
                 <span>{selectedCity}</span>
                 <ChevronDown className="w-3 h-3 text-slate-400" />
               </button>
 
               {cityDropdownOpen && (
-                <div className="absolute left-0 mt-2 w-56 rounded-xl bg-white border border-slate-200 shadow-xl py-2 z-50 animate-in fade-in zoom-in-95 duration-150">
+                <div className="absolute left-0 mt-2 w-56 rounded-2xl bg-white border border-slate-200 shadow-xl py-2 z-50 animate-in fade-in zoom-in-95 duration-150">
                   <div className="px-3 py-1 text-[11px] font-bold text-slate-400 uppercase tracking-wider">
                     Select Your City
                   </div>
@@ -139,8 +155,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                         onSelectCity(city.name);
                         setCityDropdownOpen(false);
                       }}
-                      className={`w-full text-left px-3 py-2 text-xs flex items-center justify-between hover:bg-sky-50 transition-colors ${
-                        selectedCity === city.name ? 'text-[#28328c] font-bold bg-sky-50/70' : 'text-slate-700'
+                      className={`w-full text-left px-3 py-2 text-xs flex items-center justify-between hover:bg-blue-50/70 transition-colors ${
+                        selectedCity === city.name ? 'text-[#1e3a8a] font-bold bg-blue-50' : 'text-slate-700'
                       }`}
                     >
                       <span>{city.name}</span>
@@ -157,7 +173,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               id="nav-find-doctors-btn"
               onClick={() => onNavigateToSection('doctors-section')}
-              className="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-[#28328c] hover:bg-slate-50 transition-colors cursor-pointer"
+              className="px-3 py-2 rounded-xl text-sm font-bold text-slate-700 hover:text-[#1e3a8a] hover:bg-blue-50/60 transition-colors cursor-pointer"
             >
               Find Doctors
             </button>
@@ -166,29 +182,29 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => {
                 onNavigateToSection('doctors-section');
               }}
-              className="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-[#28328c] hover:bg-slate-50 transition-colors cursor-pointer flex items-center gap-1.5"
+              className="px-3 py-2 rounded-xl text-sm font-bold text-slate-700 hover:text-[#1e3a8a] hover:bg-blue-50/60 transition-colors cursor-pointer flex items-center gap-1.5"
             >
-              <Video className="w-4 h-4 text-[#14bef0]" />
+              <Video className="w-4 h-4 text-[#0284c7]" />
               Video Consult
             </button>
             <button
               id="nav-specialties-btn"
               onClick={() => onNavigateToSection('specialties-section')}
-              className="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-[#28328c] hover:bg-slate-50 transition-colors cursor-pointer"
+              className="px-3 py-2 rounded-xl text-sm font-bold text-slate-700 hover:text-[#1e3a8a] hover:bg-blue-50/60 transition-colors cursor-pointer"
             >
               Specialties
             </button>
             <button
               id="nav-testimonials-btn"
               onClick={() => onNavigateToSection('testimonials-section')}
-              className="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-[#28328c] hover:bg-slate-50 transition-colors cursor-pointer"
+              className="px-3 py-2 rounded-xl text-sm font-bold text-slate-700 hover:text-[#1e3a8a] hover:bg-blue-50/60 transition-colors cursor-pointer"
             >
               Patient Stories
             </button>
             <button
               id="nav-faqs-btn"
               onClick={() => onNavigateToSection('faqs-section')}
-              className="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-[#28328c] hover:bg-slate-50 transition-colors cursor-pointer"
+              className="px-3 py-2 rounded-xl text-sm font-bold text-slate-700 hover:text-[#1e3a8a] hover:bg-blue-50/60 transition-colors cursor-pointer"
             >
               Help & FAQ
             </button>
@@ -199,12 +215,12 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               id="header-my-appointments-btn"
               onClick={onOpenAppointments}
-              className="relative flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold text-white bg-[#28328c] hover:bg-[#1f276f] transition-all shadow-xs cursor-pointer active:scale-95"
+              className="relative flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-[#1e3a8a] to-[#0284c7] hover:from-[#172554] hover:to-[#0369a1] transition-all shadow-md shadow-blue-950/15 cursor-pointer active:scale-95"
             >
-              <Calendar className="w-4 h-4 text-cyan-300" />
+              <Calendar className="w-4 h-4 text-sky-200" />
               <span>My Appointments</span>
               {activeAppointmentsCount > 0 && (
-                <span className="w-5 h-5 rounded-full bg-[#14bef0] text-white text-[11px] font-extrabold flex items-center justify-center">
+                <span className="w-5 h-5 rounded-full bg-sky-400 text-[#0f172a] text-[11px] font-black flex items-center justify-center shadow-xs">
                   {activeAppointmentsCount}
                 </span>
               )}
@@ -214,7 +230,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               id="mobile-menu-toggle-btn"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors"
+              className="md:hidden p-2 rounded-xl text-slate-600 hover:bg-slate-100 transition-colors"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -240,7 +256,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   }}
                   className={`px-2 py-1.5 rounded-lg text-xs font-semibold text-center border ${
                     selectedCity === city.name
-                      ? 'border-[#28328c] bg-blue-50 text-[#28328c]'
+                      ? 'border-[#1e3a8a] bg-blue-50 text-[#1e3a8a] font-bold'
                       : 'border-slate-200 text-slate-700 bg-slate-50'
                   }`}
                 >
@@ -256,23 +272,23 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onNavigateToSection('doctors-section');
                 setMobileMenuOpen(false);
               }}
-              className="w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-100 flex items-center justify-between"
+              className="w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-50 flex items-center justify-between"
             >
               <span>Find Doctors</span>
-              <span className="text-xs text-slate-400">100k+ Clinics</span>
+              <span className="text-xs text-[#0284c7]">100k+ Clinics</span>
             </button>
             <button
               onClick={() => {
                 onNavigateToSection('doctors-section');
                 setMobileMenuOpen(false);
               }}
-              className="w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-100 flex items-center justify-between"
+              className="w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-50 flex items-center justify-between"
             >
               <span className="flex items-center gap-2">
-                <Video className="w-4 h-4 text-[#14bef0]" />
+                <Video className="w-4 h-4 text-[#0284c7]" />
                 Video Consult
               </span>
-              <span className="text-[10px] bg-cyan-100 text-cyan-800 px-2 py-0.5 rounded-full font-bold">
+              <span className="text-[10px] bg-blue-100 text-blue-900 px-2 py-0.5 rounded-full font-bold">
                 Instant 60s
               </span>
             </button>
@@ -281,7 +297,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onNavigateToSection('specialties-section');
                 setMobileMenuOpen(false);
               }}
-              className="w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-100"
+              className="w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-50"
             >
               Explore Specialties
             </button>
@@ -290,7 +306,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onNavigateToSection('testimonials-section');
                 setMobileMenuOpen(false);
               }}
-              className="w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-100"
+              className="w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-50"
             >
               Doctor Testimonials & Reviews
             </button>
@@ -299,10 +315,28 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onNavigateToSection('faqs-section');
                 setMobileMenuOpen(false);
               }}
-              className="w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-100"
+              className="w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-50"
             >
               Help & FAQ
             </button>
+
+            {onToggleWatermark && (
+              <button
+                onClick={() => {
+                  onToggleWatermark();
+                  setMobileMenuOpen(false);
+                }}
+                className="w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold text-[#1e3a8a] bg-blue-50 flex items-center justify-between"
+              >
+                <span className="flex items-center gap-2">
+                  <Eye className="w-4 h-4 text-[#0284c7]" />
+                  Watermark Background
+                </span>
+                <span className="text-xs font-bold text-slate-800">
+                  {watermarkIntensity === 'prominent' ? 'Prominent' : 'Subtle'}
+                </span>
+              </button>
+            )}
           </div>
 
           <div className="pt-2 border-t border-slate-100">
@@ -311,9 +345,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onOpenAppointments();
                 setMobileMenuOpen(false);
               }}
-              className="w-full py-2.5 px-4 rounded-xl text-sm font-bold text-white bg-[#28328c] hover:bg-[#1f276f] flex items-center justify-center gap-2 shadow-xs"
+              className="w-full py-2.5 px-4 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-[#1e3a8a] to-[#0284c7] flex items-center justify-center gap-2 shadow-xs"
             >
-              <Calendar className="w-4 h-4 text-cyan-300" />
+              <Calendar className="w-4 h-4 text-sky-200" />
               <span>View Booked Appointments ({activeAppointmentsCount})</span>
             </button>
           </div>

@@ -27,20 +27,20 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCity, onOpenInfo }) => {
   };
 
   return (
-    <footer className="bg-slate-900 text-slate-300 pt-16 pb-12 border-t border-slate-800">
+    <footer className="bg-[#0a0f1d] text-slate-400 pt-16 pb-12 border-t border-slate-800 relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Top brand summary */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-slate-800">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-slate-800/80">
           
           <div className="md:col-span-4 space-y-4">
             <div className="flex items-center gap-2.5">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#28328c] to-[#14bef0] flex items-center justify-center text-white shadow-md">
-                <Stethoscope className="w-5 h-5" />
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#1e3a8a] to-[#0284c7] flex items-center justify-center text-white shadow-md shadow-blue-950/40">
+                <Stethoscope className="w-5 h-5 text-sky-100" />
               </div>
               <div className="flex items-center gap-1">
                 <span className="text-2xl font-black tracking-tight text-white">practo</span>
-                <span className="w-2 h-2 rounded-full bg-[#14bef0]"></span>
+                <span className="w-2 h-2 rounded-full bg-[#0284c7]"></span>
               </div>
             </div>
             
@@ -50,7 +50,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCity, onOpenInfo }) => {
 
             <div className="flex items-center gap-3 text-xs text-slate-400">
               <span className="flex items-center gap-1">
-                <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                <ShieldCheck className="w-4 h-4 text-[#0284c7]" />
                 ISO 27001 Certified
               </span>
               <span>•</span>
@@ -108,14 +108,14 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCity, onOpenInfo }) => {
             </h4>
             <div className="space-y-2 text-xs text-slate-400">
               <div className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-[#14bef0]" />
+                <Phone className="w-3.5 h-3.5 text-[#0284c7]" />
                 <span className="text-white font-bold">1800-425-7228</span>
               </div>
               <div className="flex items-center gap-2">
-                <Mail className="w-3.5 h-3.5 text-[#14bef0]" />
+                <Mail className="w-3.5 h-3.5 text-[#0284c7]" />
                 <span>support@practo.com</span>
               </div>
-              <p className="text-[11px] text-slate-500 pt-2">
+              <p className="text-[11px] text-slate-400 pt-2">
                 For life-threatening medical emergencies, please immediately visit the nearest hospital casualty ward or call 108/112.
               </p>
             </div>
@@ -124,26 +124,26 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCity, onOpenInfo }) => {
         </div>
 
         {/* Bottom copyright and legal modals */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-slate-400 gap-4">
           <p>© 2026 Practo Technologies Pvt. Ltd. All rights reserved.</p>
           <div className="flex items-center gap-4">
             <button
               onClick={(e) => handleInfoClick(e, 'privacy')}
-              className="hover:text-slate-300 transition-colors cursor-pointer"
+              className="hover:text-slate-200 transition-colors cursor-pointer"
             >
               Privacy Policy
             </button>
             <span>•</span>
             <button
               onClick={(e) => handleInfoClick(e, 'terms')}
-              className="hover:text-slate-300 transition-colors cursor-pointer"
+              className="hover:text-slate-200 transition-colors cursor-pointer"
             >
               Terms & Conditions
             </button>
             <span>•</span>
             <button
               onClick={(e) => handleInfoClick(e, 'directory')}
-              className="hover:text-slate-300 transition-colors cursor-pointer"
+              className="hover:text-slate-200 transition-colors cursor-pointer"
             >
               Healthcare Directory
             </button>

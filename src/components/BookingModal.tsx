@@ -232,7 +232,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
         {/* Header Bar */}
         <div className="bg-slate-50 px-5 sm:px-6 py-4 border-b border-slate-200 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-2">
-            <span className="text-xs font-bold text-[#28328c] uppercase tracking-wider">
+            <span className="text-xs font-bold text-[#1e3a8a] uppercase tracking-wider">
               {currentStep === 1 && 'Step 1 of 2: Select Date & Time Slot'}
               {currentStep === 2 && 'Step 2 of 2: Patient Details'}
               {currentStep === 3 && 'Booking Confirmed!'}
@@ -241,14 +241,14 @@ export const BookingModal: React.FC<BookingModalProps> = ({
           <button
             onClick={onClose}
             aria-label="Close modal"
-            className="p-1.5 rounded-full text-slate-400 hover:text-slate-700 hover:bg-slate-200/60 transition-colors cursor-pointer"
+            className="p-1.5 rounded-full text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Doctor Summary Banner */}
-        <div className="px-5 sm:px-6 py-3.5 bg-gradient-to-r from-blue-50/70 to-indigo-50/40 border-b border-slate-200 flex items-center justify-between gap-4 shrink-0">
+        <div className="px-5 sm:px-6 py-3.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between gap-4 shrink-0">
           <div className="flex items-center gap-3">
             <img
               src={doctor.profileImage}
@@ -258,10 +258,10 @@ export const BookingModal: React.FC<BookingModalProps> = ({
             />
             <div>
               <div className="flex items-center gap-1.5">
-                <h3 className="text-sm sm:text-base font-extrabold text-[#28328c]">
+                <h3 className="text-sm sm:text-base font-extrabold text-[#0f172a]">
                   {doctor.name}
                 </h3>
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                <ShieldCheck className="w-3.5 h-3.5 text-[#0284c7]" />
               </div>
               <p className="text-xs text-slate-500">
                 {doctor.specialty} • {doctor.clinicName} ({doctor.area}, {doctor.city})
@@ -285,7 +285,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               
               {/* Consultation Mode Selector */}
               <div>
-                <label className="text-xs font-bold text-slate-700 uppercase tracking-wider block mb-2">
+                <label className="text-xs font-bold text-[#1e3a8a] uppercase tracking-wider block mb-2">
                   Choose Consultation Mode
                 </label>
                 <div className="grid grid-cols-2 gap-3">
@@ -295,12 +295,12 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                       onClick={() => setMode('in_clinic')}
                       className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer ${
                         mode === 'in_clinic'
-                          ? 'border-[#28328c] bg-blue-50/60 shadow-xs ring-2 ring-[#28328c]/15'
+                          ? 'border-[#1e3a8a] bg-blue-50/70 shadow-xs ring-2 ring-[#1e3a8a]/15'
                           : 'border-slate-200 hover:bg-slate-50'
                       }`}
                     >
                       <div className="flex items-center justify-between mb-1">
-                        <Building2 className={`w-4 h-4 ${mode === 'in_clinic' ? 'text-[#28328c]' : 'text-slate-400'}`} />
+                        <Building2 className={`w-4 h-4 ${mode === 'in_clinic' ? 'text-[#1e3a8a]' : 'text-slate-400'}`} />
                         <span className="text-xs font-bold text-slate-900">₹{doctor.consultationFee}</span>
                       </div>
                       <strong className="block text-xs sm:text-sm font-bold text-slate-900">In-Clinic Visit</strong>
@@ -314,13 +314,13 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                       onClick={() => setMode('video')}
                       className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer ${
                         mode === 'video'
-                          ? 'border-[#28328c] bg-blue-50/60 shadow-xs ring-2 ring-[#28328c]/15'
+                          ? 'border-[#1e3a8a] bg-blue-50/70 shadow-xs ring-2 ring-[#1e3a8a]/15'
                           : 'border-slate-200 hover:bg-slate-50'
                       }`}
                     >
                       <div className="flex items-center justify-between mb-1">
-                        <Video className={`w-4 h-4 ${mode === 'video' ? 'text-[#14bef0]' : 'text-slate-400'}`} />
-                        <span className="text-xs font-bold text-[#28328c]">₹{doctor.videoConsultFee}</span>
+                        <Video className={`w-4 h-4 ${mode === 'video' ? 'text-[#0284c7]' : 'text-slate-400'}`} />
+                        <span className="text-xs font-bold text-[#1e3a8a]">₹{doctor.videoConsultFee}</span>
                       </div>
                       <strong className="block text-xs sm:text-sm font-bold text-slate-900">Online Video Consult</strong>
                       <span className="text-[11px] text-slate-500">HD Room link sent via WhatsApp & SMS</span>
@@ -331,7 +331,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
               {/* Date Selection Pills */}
               <div>
-                <label className="text-xs font-bold text-slate-700 uppercase tracking-wider block mb-2">
+                <label className="text-xs font-bold text-[#1e3a8a] uppercase tracking-wider block mb-2">
                   Select Date (Doctor practices: {doctor.availableDays.join(', ')})
                 </label>
                 <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
@@ -349,7 +349,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                           isDisabled
                             ? 'opacity-40 bg-slate-100 border-slate-200 cursor-not-allowed text-slate-400'
                             : isSelected
-                            ? 'bg-[#28328c] text-white border-[#28328c] shadow-xs'
+                            ? 'bg-[#1e3a8a] text-white border-[#1e3a8a] shadow-xs'
                             : 'bg-white hover:bg-slate-50 border-slate-200 text-slate-700'
                         }`}
                       >
@@ -404,7 +404,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                               isBooked
                                 ? 'bg-slate-100 text-slate-400 border-slate-200 line-through cursor-not-allowed opacity-60'
                                 : isSelected
-                                ? 'bg-[#28328c] text-white border-[#28328c] shadow-xs'
+                                ? 'bg-[#1e3a8a] text-white border-[#1e3a8a] shadow-xs'
                                 : 'bg-white hover:bg-slate-50 border-slate-200 text-slate-700'
                             }`}
                           >
@@ -439,7 +439,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                               isBooked
                                 ? 'bg-slate-100 text-slate-400 border-slate-200 line-through cursor-not-allowed opacity-60'
                                 : isSelected
-                                ? 'bg-[#28328c] text-white border-[#28328c] shadow-xs'
+                                ? 'bg-[#1e3a8a] text-white border-[#1e3a8a] shadow-xs'
                                 : 'bg-white hover:bg-slate-50 border-slate-200 text-slate-700'
                             }`}
                           >
@@ -474,7 +474,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                               isBooked
                                 ? 'bg-slate-100 text-slate-400 border-slate-200 line-through cursor-not-allowed opacity-60'
                                 : isSelected
-                                ? 'bg-[#28328c] text-white border-[#28328c] shadow-xs'
+                                ? 'bg-[#1e3a8a] text-white border-[#1e3a8a] shadow-xs'
                                 : 'bg-white hover:bg-slate-50 border-slate-200 text-slate-700'
                             }`}
                           >
@@ -500,14 +500,14 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               <div className="p-3 bg-blue-50/70 border border-blue-200 rounded-2xl flex items-center justify-between text-xs">
                 <div>
                   <span className="text-slate-500 font-semibold block">Booking Slot:</span>
-                  <strong className="text-[#28328c] font-bold text-sm">
+                  <strong className="text-[#1e3a8a] font-bold text-sm">
                     {selectedDate} at {selectedSlot} ({mode === 'in_clinic' ? 'In-Clinic Visit' : 'Video Consult'})
                   </strong>
                 </div>
                 <button
                   type="button"
                   onClick={() => setCurrentStep(1)}
-                  className="text-xs font-bold text-[#28328c] hover:underline cursor-pointer"
+                  className="text-xs font-bold text-[#1e3a8a] hover:underline cursor-pointer"
                 >
                   Change Slot
                 </button>
@@ -649,7 +649,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     }}
                     className={`p-3.5 rounded-2xl border cursor-pointer transition-all ${
                       paymentOption === 'pay_at_clinic'
-                        ? 'border-[#28328c] bg-blue-50/50 shadow-xs ring-2 ring-[#28328c]/15'
+                        ? 'border-[#1e3a8a] bg-blue-50/70 shadow-xs ring-2 ring-[#1e3a8a]/15'
                         : 'border-slate-200 hover:bg-slate-50'
                     }`}
                   >
@@ -657,7 +657,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                       <strong className="text-xs font-bold text-slate-900">
                         {mode === 'in_clinic' ? 'Pay at Clinic' : 'Pay After Video Consult'}
                       </strong>
-                      <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
+                      <span className="text-[10px] font-bold text-[#0284c7] bg-blue-100 px-2 py-0.5 rounded-full">
                         Zero Advance
                       </span>
                     </div>
@@ -674,7 +674,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     }}
                     className={`p-3.5 rounded-2xl border cursor-pointer transition-all ${
                       paymentOption === 'pay_online_demo'
-                        ? 'border-[#28328c] bg-blue-50/50 shadow-xs ring-2 ring-[#28328c]/15'
+                        ? 'border-[#1e3a8a] bg-blue-50/70 shadow-xs ring-2 ring-[#1e3a8a]/15'
                         : 'border-slate-200 hover:bg-slate-50'
                     }`}
                   >
@@ -714,15 +714,15 @@ export const BookingModal: React.FC<BookingModalProps> = ({
           {currentStep === 3 && confirmedBooking && (
             <div className="space-y-6 text-center py-2">
               
-              <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto shadow-xs">
+              <div className="w-16 h-16 rounded-full bg-blue-100 text-[#0284c7] flex items-center justify-center mx-auto shadow-xs">
                 <CheckCircle2 className="w-10 h-10" />
               </div>
 
               <div>
-                <span className="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 font-extrabold text-xs inline-block mb-2">
+                <span className="px-3 py-1 rounded-full bg-blue-100 text-[#1e3a8a] font-extrabold text-xs inline-block mb-2">
                   Confirmed & Verified
                 </span>
-                <h3 className="text-xl sm:text-2xl font-black text-[#28328c]">
+                <h3 className="text-xl sm:text-2xl font-black text-[#0f172a]">
                   Appointment Successfully Scheduled!
                 </h3>
                 <p className="text-xs text-slate-500 mt-1">
@@ -737,11 +737,11 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     <span className="text-[10px] uppercase tracking-wider font-bold text-slate-400 block">
                       Booking Reference ID
                     </span>
-                    <strong className="text-sm sm:text-base font-black text-[#28328c] font-mono">
+                    <strong className="text-sm sm:text-base font-black text-[#1e3a8a] font-mono">
                       {confirmedBooking.bookingRef}
                     </strong>
                   </div>
-                  <span className="px-3 py-1 rounded-xl text-xs font-bold bg-blue-100 text-[#28328c]">
+                  <span className="px-3 py-1 rounded-xl text-xs font-bold bg-blue-100 text-[#1e3a8a]">
                     {confirmedBooking.mode === 'in_clinic' ? 'In-Clinic Visit' : 'Video Consultation'}
                   </span>
                 </div>
@@ -755,7 +755,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   <div>
                     <span className="text-slate-400 block font-semibold">Scheduled Date & Time</span>
                     <strong className="text-slate-800 text-sm block">{confirmedBooking.date}</strong>
-                    <span className="text-[#28328c] font-bold">{confirmedBooking.timeSlot}</span>
+                    <span className="text-[#1e3a8a] font-bold">{confirmedBooking.timeSlot}</span>
                   </div>
                   <div>
                     <span className="text-slate-400 block font-semibold">Patient Name</span>
@@ -765,7 +765,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   <div>
                     <span className="text-slate-400 block font-semibold">Payment Status</span>
                     <strong className="text-slate-800 block">₹{confirmedBooking.consultationFee}</strong>
-                    <span className="text-emerald-700 font-semibold">
+                    <span className="text-[#0369a1] font-semibold">
                       {confirmedBooking.paymentMethod === 'pay_online_demo' ? 'Paid (Sandbox Demo)' : 'Pay at Clinic Desk'}
                     </span>
                   </div>
@@ -789,7 +789,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     onClose();
                     onOpenAppointments();
                   }}
-                  className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-[#28328c] hover:bg-[#1f276f] text-white text-xs font-bold transition-all shadow-xs cursor-pointer"
+                  className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#1e3a8a] to-[#0284c7] hover:from-[#172554] hover:to-[#0369a1] text-white text-xs font-bold transition-all shadow-md shadow-blue-950/20 cursor-pointer"
                 >
                   View in My Appointments
                 </button>
@@ -812,7 +812,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
           <div className="bg-slate-50 px-5 sm:px-6 py-4 border-t border-slate-200 flex items-center justify-between shrink-0">
             {currentStep === 1 ? (
               <span className="text-xs text-slate-500 flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                <ShieldCheck className="w-4 h-4 text-[#0284c7]" />
                 100% Free Booking • Zero Cancellation Fee
               </span>
             ) : (
@@ -830,20 +830,20 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 id="booking-next-step-btn"
                 type="button"
                 onClick={handleProceedToDetails}
-                className="px-6 py-2.5 rounded-xl bg-[#28328c] hover:bg-[#1f276f] text-white text-xs font-bold transition-all shadow-md shadow-blue-900/15 flex items-center gap-1.5 cursor-pointer active:scale-95"
+                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#1e3a8a] to-[#0284c7] hover:from-[#172554] hover:to-[#0369a1] text-white text-xs font-bold transition-all shadow-md shadow-blue-950/20 flex items-center gap-1.5 cursor-pointer active:scale-95"
               >
                 <span>Continue to Patient Details</span>
-                <ChevronRight className="w-4 h-4 text-cyan-300" />
+                <ChevronRight className="w-4 h-4 text-sky-200" />
               </button>
             ) : (
               <button
                 id="booking-confirm-btn"
                 type="button"
                 onClick={handleConfirmBooking}
-                className="px-6 py-2.5 rounded-xl bg-[#28328c] hover:bg-[#1f276f] text-white text-xs font-bold transition-all shadow-md shadow-blue-900/15 flex items-center gap-1.5 cursor-pointer active:scale-95"
+                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#1e3a8a] to-[#0284c7] hover:from-[#172554] hover:to-[#0369a1] text-white text-xs font-bold transition-all shadow-md shadow-blue-950/20 flex items-center gap-1.5 cursor-pointer active:scale-95"
               >
                 <span>Confirm Appointment</span>
-                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                <CheckCircle2 className="w-4 h-4 text-sky-200" />
               </button>
             )}
           </div>

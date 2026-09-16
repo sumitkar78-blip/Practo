@@ -87,7 +87,8 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
         setLocationDetecting(false);
         const { latitude, longitude } = position.coords;
         // Find closest supported city using Haversine calculation
-        const closestCity = findClosestCity(latitude, longitude, CITIES);
+        const closestResult = findClosestCity(latitude, longitude, CITIES);
+        const closestCity = closestResult.city;
         onSelectCity(closestCity.name);
         // Set default popular area for that city
         if (closestCity.popularAreas.length > 0) {
@@ -172,28 +173,28 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
   };
 
   return (
-    <section id="hero-section" className="relative bg-gradient-to-b from-blue-50/70 via-white to-slate-50 pt-10 pb-16 border-b border-slate-200/80">
+    <section id="hero-section" className="relative bg-gradient-to-b from-slate-100/80 via-white to-slate-50/50 pt-10 pb-16 border-b border-slate-200">
       {/* Decorative background accents */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-24 right-5 w-96 h-96 rounded-full bg-cyan-100/40 blur-3xl"></div>
-        <div className="absolute top-48 -left-20 w-80 h-80 rounded-full bg-blue-100/40 blur-3xl"></div>
+        <div className="absolute -top-24 right-5 w-96 h-96 rounded-full bg-blue-100/40 blur-3xl"></div>
+        <div className="absolute top-48 -left-20 w-80 h-80 rounded-full bg-sky-100/50 blur-3xl"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Headline */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100/70 text-[#28328c] text-xs font-bold mb-3 border border-blue-200/60">
-            <Sparkles className="w-3.5 h-3.5 text-[#14bef0]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 text-[#1e3a8a] text-xs font-bold mb-3 border border-blue-200 shadow-2xs">
+            <Sparkles className="w-3.5 h-3.5 text-[#0284c7]" />
             <span>India's Most Trusted Doctor Discovery & Appointment Platform</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#0f172a] leading-tight">
             Find and book top doctors near you with{' '}
-            <span className="text-[#28328c] relative inline-block">
+            <span className="text-[#1e3a8a] relative inline-block">
               confidence
-              <span className="absolute bottom-1 left-0 w-full h-1.5 bg-[#14bef0]/30 -z-10 rounded-sm"></span>
+              <span className="absolute bottom-1.5 left-0 w-full h-2 bg-[#0284c7]/20 -z-10 rounded-sm"></span>
             </span>
           </h1>
-          <p className="mt-3 text-base sm:text-lg text-slate-600 font-normal max-w-2xl mx-auto">
+          <p className="mt-3 text-base sm:text-lg text-slate-600 font-normal max-w-2xl mx-auto leading-relaxed">
             Book verified in-clinic appointments or consult online via HD video call in just 60 seconds. Zero convenience fee.
           </p>
         </div>
@@ -204,13 +205,13 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
             <div className={`p-3 rounded-xl text-xs flex items-center justify-between border ${
               locationStatus.isError
                 ? 'bg-amber-50 border-amber-200 text-amber-800'
-                : 'bg-emerald-50 border-emerald-200 text-emerald-800'
+                : 'bg-blue-50 border-blue-200 text-blue-900'
             }`}>
               <div className="flex items-center gap-2">
                 {locationStatus.isError ? (
                   <AlertCircle className="w-4 h-4 text-amber-600 shrink-0" />
                 ) : (
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#0284c7] shrink-0" />
                 )}
                 <span>{locationStatus.text}</span>
               </div>
@@ -227,21 +228,21 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
 
         {/* Search Bar Container */}
         <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-3xl p-2 sm:p-2.5 shadow-xl shadow-blue-900/10 border border-slate-200/90 flex flex-col md:flex-row gap-2 items-stretch">
+          <div className="bg-white/95 backdrop-blur-md rounded-3xl p-2 sm:p-2.5 shadow-xl shadow-slate-900/5 border border-slate-200 flex flex-col md:flex-row gap-2 items-stretch">
             
             {/* Location Selector (Left Section) */}
             <div ref={locationContainerRef} className="relative md:w-5/12">
               <div
                 id="location-input-box"
                 onClick={() => setShowLocationDropdown(!showLocationDropdown)}
-                className="flex items-center gap-2.5 px-4 py-3 rounded-2xl bg-slate-50 hover:bg-slate-100/80 border border-slate-200/60 transition-colors cursor-pointer h-full"
+                className="flex items-center gap-2.5 px-4 py-3 rounded-2xl bg-slate-50 hover:bg-slate-100/80 border border-slate-200 transition-colors cursor-pointer h-full"
               >
-                <MapPin className="w-5 h-5 text-[#14bef0] shrink-0" />
+                <MapPin className="w-5 h-5 text-[#0284c7] shrink-0" />
                 <div className="flex-1 min-w-0">
                   <span className="text-[10px] uppercase tracking-wider font-bold text-slate-400 block">
                     City & Locality
                   </span>
-                  <div className="text-xs sm:text-sm font-bold text-slate-800 truncate">
+                  <div className="text-xs sm:text-sm font-bold text-[#1e3a8a] truncate">
                     {selectedCity} {selectedArea ? `• ${selectedArea}` : '• All Areas'}
                   </div>
                 </div>
@@ -257,9 +258,9 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
                     id="detect-gps-location-btn"
                     onClick={handleDetectLocation}
                     disabled={locationDetecting}
-                    className="w-full flex items-center gap-2.5 p-3 rounded-xl bg-blue-50/70 hover:bg-blue-100/70 text-[#28328c] text-xs font-bold transition-colors mb-3 cursor-pointer disabled:opacity-50"
+                    className="w-full flex items-center gap-2.5 p-3 rounded-xl bg-blue-50 hover:bg-blue-100 text-[#1e3a8a] text-xs font-bold transition-colors mb-3 cursor-pointer disabled:opacity-50"
                   >
-                    <Crosshair className={`w-4 h-4 text-[#14bef0] ${locationDetecting ? 'animate-spin' : ''}`} />
+                    <Crosshair className={`w-4 h-4 text-[#0284c7] ${locationDetecting ? 'animate-spin' : ''}`} />
                     <span>{locationDetecting ? 'Detecting current GPS location...' : 'Detect My Exact Location'}</span>
                   </button>
 
@@ -277,12 +278,12 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
                         }}
                         className={`w-full text-left px-3 py-2 rounded-lg text-xs font-semibold flex items-center justify-between transition-colors ${
                           selectedCity === c.name
-                            ? 'bg-[#28328c] text-white'
-                            : 'hover:bg-slate-100 text-slate-700'
+                            ? 'bg-[#1e3a8a] text-white font-bold'
+                            : 'hover:bg-blue-50 text-slate-700'
                         }`}
                       >
                         <span>{c.name}</span>
-                        <span className={selectedCity === c.name ? 'text-blue-200 text-[10px]' : 'text-slate-400 text-[10px]'}>
+                        <span className={selectedCity === c.name ? 'text-sky-200 text-[10px]' : 'text-slate-400 text-[10px]'}>
                           {c.state}
                         </span>
                       </button>
@@ -301,7 +302,7 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
                             onSelectArea('');
                             setShowLocationDropdown(false);
                           }}
-                          className="text-[11px] font-bold text-blue-600 hover:underline cursor-pointer"
+                          className="text-[11px] font-bold text-[#0284c7] hover:underline cursor-pointer"
                         >
                           Clear Area
                         </button>
@@ -316,7 +317,7 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
                         }}
                         className={`px-2.5 py-1 rounded-lg text-xs font-medium cursor-pointer ${
                           !selectedArea
-                            ? 'bg-blue-100 text-[#28328c] font-bold'
+                            ? 'bg-blue-100 text-[#1e3a8a] font-bold'
                             : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                         }`}
                       >
@@ -331,7 +332,7 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
                           }}
                           className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-colors cursor-pointer ${
                             selectedArea === area
-                              ? 'bg-[#28328c] text-white font-bold'
+                              ? 'bg-[#1e3a8a] text-white font-bold'
                               : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                           }`}
                         >
@@ -347,7 +348,7 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
 
             {/* Doctor / Specialty Search Input (Right Section) */}
             <div ref={searchContainerRef} className="relative flex-1">
-              <div className="flex items-center gap-2.5 px-4 py-3 rounded-2xl bg-slate-50 border border-slate-200/60 focus-within:border-blue-400 focus-within:bg-white transition-all h-full">
+              <div className="flex items-center gap-2.5 px-4 py-3 rounded-2xl bg-slate-50/80 border border-slate-200 focus-within:border-[#0284c7] focus-within:bg-white transition-all h-full">
                 <Search className="w-5 h-5 text-slate-400 shrink-0" />
                 <div className="flex-1 min-w-0">
                   <span className="text-[10px] uppercase tracking-wider font-bold text-slate-400 block">
@@ -385,7 +386,7 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
                   {/* Matched Specialties */}
                   <div className="mb-3">
                     <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-2 mb-1.5 flex items-center gap-1.5">
-                      <Stethoscope className="w-3.5 h-3.5 text-[#14bef0]" />
+                      <Stethoscope className="w-3.5 h-3.5 text-[#0284c7]" />
                       <span>Medical Specialties</span>
                     </div>
                     <div className="space-y-1">
@@ -397,7 +398,7 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
                             setShowSearchSuggestions(false);
                             onSelectSpecialtyChip(s.name);
                           }}
-                          className="w-full text-left px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 hover:bg-blue-50/70 hover:text-[#28328c] flex items-center justify-between transition-colors"
+                          className="w-full text-left px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 hover:bg-blue-50 hover:text-[#1e3a8a] flex items-center justify-between transition-colors"
                         >
                           <div className="flex items-center gap-2">
                             <span>{s.name}</span>
@@ -405,7 +406,7 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
                               ({s.popularSymptoms.slice(0, 2).join(', ')})
                             </span>
                           </div>
-                          <span className="text-[11px] font-bold text-emerald-600">
+                          <span className="text-[11px] font-bold text-[#0284c7]">
                             {s.doctorCount}+ Specialists
                           </span>
                         </button>
@@ -416,7 +417,7 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
                   {/* Matched Doctors */}
                   <div>
                     <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-2 mb-1.5 flex items-center gap-1.5">
-                      <User className="w-3.5 h-3.5 text-[#28328c]" />
+                      <User className="w-3.5 h-3.5 text-[#1e3a8a]" />
                       <span>Verified Practitioners</span>
                     </div>
                     <div className="space-y-1">
@@ -428,13 +429,13 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
                             setShowSearchSuggestions(false);
                             onExecuteSearch();
                           }}
-                          className="w-full text-left px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 hover:bg-blue-50/70 hover:text-[#28328c] flex items-center justify-between transition-colors"
+                          className="w-full text-left px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 hover:bg-blue-50 hover:text-[#1e3a8a] flex items-center justify-between transition-colors"
                         >
                           <div>
                             <div className="font-bold text-slate-900">{doc.name}</div>
                             <div className="text-[11px] text-slate-500">{doc.specialty} • {doc.clinicName} ({doc.city})</div>
                           </div>
-                          <span className="text-xs font-bold text-[#28328c]">
+                          <span className="text-xs font-bold text-[#1e3a8a]">
                             ₹{doc.consultationFee}
                           </span>
                         </button>
@@ -453,10 +454,10 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
                 setShowSearchSuggestions(false);
                 onExecuteSearch();
               }}
-              className="px-6 py-3.5 rounded-2xl bg-[#28328c] hover:bg-[#1f276f] text-white text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all shadow-md shadow-blue-900/20 active:scale-95 cursor-pointer shrink-0"
+              className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-[#1e3a8a] to-[#0284c7] hover:from-[#172554] hover:to-[#0369a1] text-white text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all shadow-md shadow-blue-950/15 active:scale-95 cursor-pointer shrink-0"
             >
               <span>Search Doctors</span>
-              <ArrowRight className="w-4 h-4 text-cyan-300" />
+              <ArrowRight className="w-4 h-4 text-sky-200" />
             </button>
 
           </div>
@@ -473,7 +474,7 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
               key={chip}
               id={`popular-chip-${chip.toLowerCase().replace(/\s+/g, '-')}`}
               onClick={() => onSelectSpecialtyChip(chip)}
-              className="px-3 py-1 rounded-full bg-white hover:bg-blue-50 border border-slate-200/90 text-slate-600 hover:text-[#28328c] font-medium transition-all shadow-2xs cursor-pointer hover:border-blue-300"
+              className="px-3.5 py-1 rounded-full bg-white hover:bg-blue-50 border border-slate-200 text-slate-600 hover:text-[#1e3a8a] font-medium transition-all shadow-2xs cursor-pointer hover:border-blue-300"
             >
               {chip}
             </button>

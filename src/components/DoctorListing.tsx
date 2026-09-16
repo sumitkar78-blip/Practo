@@ -54,22 +54,22 @@ export const DoctorListing: React.FC<DoctorListingProps> = ({
   ) || CITIES[0];
 
   return (
-    <section id="doctors-section" className="py-12 bg-slate-50 border-b border-slate-200">
+    <section id="doctors-section" className="py-12 bg-transparent border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Title & Subhead */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-6">
           <div>
-            <div className="flex items-center gap-2 text-xs font-bold text-[#28328c] uppercase tracking-wider mb-1">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" />
+            <div className="flex items-center gap-2 text-xs font-bold text-[#1e3a8a] uppercase tracking-wider mb-1">
+              <ShieldCheck className="w-4 h-4 text-[#0284c7]" />
               <span>Practo Verified Doctors</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0f172a] tracking-tight">
               {filters.specialty ? `${filters.specialty} Specialists` : 'Book Appointments with Top Specialists'}
             </h2>
             <p className="text-sm text-slate-500 mt-1">
-              Showing <strong className="text-slate-900 font-bold">{doctors.length}</strong> verified doctors in{' '}
-              <strong className="text-slate-700">{filters.city}</strong>
+              Showing <strong className="text-[#0f172a] font-bold">{doctors.length}</strong> verified doctors in{' '}
+              <strong className="text-[#1e3a8a]">{filters.city}</strong>
               {filters.area ? ` • ${filters.area}` : ''}
             </p>
           </div>
@@ -93,17 +93,17 @@ export const DoctorListing: React.FC<DoctorListingProps> = ({
         </div>
 
         {/* Filter Controls Bar */}
-        <div className="bg-white rounded-2xl p-4 border border-slate-200 shadow-xs mb-8">
+        <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 border border-slate-200 shadow-2xs mb-8">
           <div className="flex flex-wrap items-center gap-2 sm:gap-3">
             
             {/* Consultation Mode Filter */}
-            <div className="flex items-center bg-slate-100 p-1 rounded-xl">
+            <div className="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200">
               <button
                 id="filter-mode-all"
                 onClick={() => onUpdateFilters({ mode: 'all' })}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                   filters.mode === 'all'
-                    ? 'bg-white text-[#28328c] shadow-xs'
+                    ? 'bg-white text-[#1e3a8a] shadow-xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -114,7 +114,7 @@ export const DoctorListing: React.FC<DoctorListingProps> = ({
                 onClick={() => onUpdateFilters({ mode: 'in_clinic' })}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                   filters.mode === 'in_clinic'
-                    ? 'bg-white text-[#28328c] shadow-xs'
+                    ? 'bg-white text-[#1e3a8a] shadow-xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -125,11 +125,11 @@ export const DoctorListing: React.FC<DoctorListingProps> = ({
                 onClick={() => onUpdateFilters({ mode: 'video' })}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1 ${
                   filters.mode === 'video'
-                    ? 'bg-white text-[#28328c] shadow-xs'
+                    ? 'bg-white text-[#1e3a8a] shadow-xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
-                <Video className="w-3.5 h-3.5 text-[#14bef0]" />
+                <Video className="w-3.5 h-3.5 text-[#0284c7]" />
                 Video Consult
               </button>
             </div>
@@ -209,12 +209,12 @@ export const DoctorListing: React.FC<DoctorListingProps> = ({
               onClick={() => onUpdateFilters({ availableTodayOnly: !filters.availableTodayOnly })}
               className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold border transition-colors cursor-pointer ${
                 filters.availableTodayOnly
-                  ? 'bg-emerald-50 border-emerald-300 text-emerald-800'
-                  : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100'
+                  ? 'bg-blue-50 border-blue-300 text-[#1e3a8a]'
+                  : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-blue-50/50'
               }`}
             >
               <div className={`w-3.5 h-3.5 rounded flex items-center justify-center border ${
-                filters.availableTodayOnly ? 'bg-emerald-600 border-emerald-600 text-white' : 'border-slate-300'
+                filters.availableTodayOnly ? 'bg-[#0284c7] border-[#0284c7] text-white' : 'border-slate-300'
               }`}>
                 {filters.availableTodayOnly && <Check className="w-3 h-3" />}
               </div>
@@ -240,42 +240,42 @@ export const DoctorListing: React.FC<DoctorListingProps> = ({
             <div className="mt-3 pt-3 border-t border-slate-100 flex items-center gap-2 flex-wrap text-xs text-slate-600">
               <span className="font-semibold text-slate-400">Active filters:</span>
               {filters.searchQuery && (
-                <span className="px-2.5 py-0.5 rounded-md bg-blue-50 text-[#28328c] font-medium border border-blue-200">
+                <span className="px-2.5 py-0.5 rounded-md bg-blue-50 text-[#1e3a8a] font-medium border border-blue-200">
                   Search: "{filters.searchQuery}"
                 </span>
               )}
               {filters.specialty && (
-                <span className="px-2.5 py-0.5 rounded-md bg-blue-50 text-[#28328c] font-medium border border-blue-200">
+                <span className="px-2.5 py-0.5 rounded-md bg-blue-50 text-[#1e3a8a] font-medium border border-blue-200">
                   Specialty: {filters.specialty}
                 </span>
               )}
               {filters.area && (
-                <span className="px-2.5 py-0.5 rounded-md bg-blue-50 text-[#28328c] font-medium border border-blue-200">
+                <span className="px-2.5 py-0.5 rounded-md bg-blue-50 text-[#1e3a8a] font-medium border border-blue-200">
                   Area: {filters.area}
                 </span>
               )}
               {filters.mode !== 'all' && (
-                <span className="px-2.5 py-0.5 rounded-md bg-blue-50 text-[#28328c] font-medium border border-blue-200">
+                <span className="px-2.5 py-0.5 rounded-md bg-blue-50 text-[#1e3a8a] font-medium border border-blue-200">
                   Mode: {filters.mode === 'in_clinic' ? 'In-Clinic' : 'Video Consult'}
                 </span>
               )}
               {filters.maxFee < 2000 && (
-                <span className="px-2.5 py-0.5 rounded-md bg-blue-50 text-[#28328c] font-medium border border-blue-200">
+                <span className="px-2.5 py-0.5 rounded-md bg-blue-50 text-[#1e3a8a] font-medium border border-blue-200">
                   Max Fee: ₹{filters.maxFee}
                 </span>
               )}
               {filters.gender !== 'all' && (
-                <span className="px-2.5 py-0.5 rounded-md bg-blue-50 text-[#28328c] font-medium border border-blue-200">
+                <span className="px-2.5 py-0.5 rounded-md bg-blue-50 text-[#1e3a8a] font-medium border border-blue-200">
                   Gender: {filters.gender === 'female' ? 'Female' : 'Male'}
                 </span>
               )}
               {filters.minExperience > 0 && (
-                <span className="px-2.5 py-0.5 rounded-md bg-blue-50 text-[#28328c] font-medium border border-blue-200">
+                <span className="px-2.5 py-0.5 rounded-md bg-blue-50 text-[#1e3a8a] font-medium border border-blue-200">
                   Experience: {filters.minExperience}+ yrs
                 </span>
               )}
               {filters.availableTodayOnly && (
-                <span className="px-2.5 py-0.5 rounded-md bg-emerald-50 text-emerald-700 font-medium border border-emerald-200">
+                <span className="px-2.5 py-0.5 rounded-md bg-blue-50 text-[#0284c7] font-medium border border-blue-200">
                   Available Today Only
                 </span>
               )}
@@ -286,8 +286,8 @@ export const DoctorListing: React.FC<DoctorListingProps> = ({
         {/* Doctor Results List */}
         {doctors.length === 0 ? (
           <div className="bg-white rounded-3xl p-12 text-center border border-slate-200 shadow-xs max-w-2xl mx-auto">
-            <div className="w-16 h-16 rounded-full bg-blue-50 text-[#28328c] flex items-center justify-center mx-auto mb-4">
-              <Info className="w-8 h-8 text-[#14bef0]" />
+            <div className="w-16 h-16 rounded-full bg-blue-50 text-[#1e3a8a] flex items-center justify-center mx-auto mb-4">
+              <Info className="w-8 h-8 text-[#0284c7]" />
             </div>
             <h3 className="text-xl font-bold text-slate-900">
               No doctors found matching your criteria
@@ -297,7 +297,7 @@ export const DoctorListing: React.FC<DoctorListingProps> = ({
             </p>
             <button
               onClick={onResetFilters}
-              className="mt-6 px-6 py-2.5 rounded-xl bg-[#28328c] hover:bg-[#1f276f] text-white text-xs font-bold transition-all shadow-xs cursor-pointer"
+              className="mt-6 px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#1e3a8a] to-[#0284c7] hover:from-[#172554] hover:to-[#0369a1] text-white text-xs font-bold transition-all shadow-xs cursor-pointer"
             >
               Reset All Filters
             </button>
@@ -312,7 +312,7 @@ export const DoctorListing: React.FC<DoctorListingProps> = ({
                 <div
                   key={doctor.id}
                   id={`doctor-card-${doctor.id}`}
-                  className="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200/90 shadow-xs hover:shadow-md hover:border-blue-200 transition-all flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6"
+                  className="bg-white/95 backdrop-blur-xs rounded-3xl p-5 sm:p-6 border border-slate-200 shadow-2xs hover:shadow-lg hover:border-blue-200 transition-all flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6"
                 >
                   {/* Doctor Info Section */}
                   <div className="flex items-start gap-4 sm:gap-5 flex-1">
@@ -326,7 +326,7 @@ export const DoctorListing: React.FC<DoctorListingProps> = ({
                         className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover border border-slate-200 shadow-xs"
                       />
                       {doctor.isPractoVerified && (
-                        <div className="absolute -bottom-1.5 -right-1.5 bg-emerald-600 text-white rounded-full p-1 shadow-xs" title="Practo Verified Practitioner">
+                        <div className="absolute -bottom-1.5 -right-1.5 bg-[#0284c7] text-white rounded-full p-1 shadow-xs" title="Practo Verified Practitioner">
                           <ShieldCheck className="w-3.5 h-3.5" />
                         </div>
                       )}
@@ -339,11 +339,11 @@ export const DoctorListing: React.FC<DoctorListingProps> = ({
                         <div className="flex items-center gap-2 flex-wrap">
                           <button
                             onClick={() => onViewDoctorProfile(doctor)}
-                            className="text-base sm:text-lg font-black text-[#28328c] hover:text-[#14bef0] transition-colors text-left cursor-pointer"
+                            className="text-base sm:text-lg font-black text-[#1e3a8a] hover:text-[#0284c7] transition-colors text-left cursor-pointer"
                           >
                             {doctor.name}
                           </button>
-                          <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-50 text-emerald-700 border border-emerald-200/80">
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-blue-50 text-[#0284c7] border border-blue-200">
                             Practo Verified
                           </span>
                         </div>
@@ -368,7 +368,7 @@ export const DoctorListing: React.FC<DoctorListingProps> = ({
 
                       {/* Patient Satisfaction & Reviews */}
                       <div className="flex items-center gap-3 pt-1">
-                        <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-600 text-white text-xs font-bold">
+                        <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-[#0284c7] text-white text-xs font-bold">
                           <ThumbsUp className="w-3 h-3" />
                           <span>{doctor.rating}%</span>
                         </div>
@@ -381,11 +381,11 @@ export const DoctorListing: React.FC<DoctorListingProps> = ({
                   </div>
 
                   {/* Consultation Mode Badges & Booking Section */}
-                  <div className="w-full lg:w-72 pt-4 lg:pt-0 lg:border-l lg:border-slate-100 lg:pl-6 flex flex-col justify-between self-stretch shrink-0">
+                  <div className="w-full lg:w-72 pt-4 lg:pt-0 lg:border-l lg:border-slate-200 lg:pl-6 flex flex-col justify-between self-stretch shrink-0">
                     
                     <div>
                       {/* Availability Ticker */}
-                      <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-700 mb-2">
+                      <div className="flex items-center gap-1.5 text-xs font-bold text-[#0369a1] mb-2">
                         <Clock className="w-3.5 h-3.5" />
                         <span>{doctor.nextAvailableSlot}</span>
                       </div>
@@ -404,10 +404,10 @@ export const DoctorListing: React.FC<DoctorListingProps> = ({
                         {supportsVideo && (
                           <div className="flex items-center justify-between text-slate-600">
                             <span className="flex items-center gap-1">
-                              <Video className="w-3.5 h-3.5 text-[#14bef0]" />
+                              <Video className="w-3.5 h-3.5 text-[#0284c7]" />
                               Video Consultation:
                             </span>
-                            <strong className="text-sm font-bold text-[#28328c]">₹{doctor.videoConsultFee}</strong>
+                            <strong className="text-sm font-bold text-[#1e3a8a]">₹{doctor.videoConsultFee}</strong>
                           </div>
                         )}
                       </div>
@@ -419,9 +419,9 @@ export const DoctorListing: React.FC<DoctorListingProps> = ({
                         <button
                           id={`book-clinic-btn-${doctor.id}`}
                           onClick={() => onBookDoctor(doctor, 'in_clinic')}
-                          className="w-full py-2.5 rounded-xl bg-[#28328c] hover:bg-[#1f276f] text-white text-xs font-bold transition-all shadow-xs flex items-center justify-center gap-1.5 cursor-pointer active:scale-98"
+                          className="w-full py-2.5 rounded-xl bg-gradient-to-r from-[#1e3a8a] to-[#0284c7] hover:from-[#172554] hover:to-[#0369a1] text-white text-xs font-bold transition-all shadow-md shadow-blue-950/15 flex items-center justify-center gap-1.5 cursor-pointer active:scale-98"
                         >
-                          <Calendar className="w-3.5 h-3.5 text-cyan-300" />
+                          <Calendar className="w-3.5 h-3.5 text-sky-200" />
                           <span>Book Clinic Visit</span>
                         </button>
                       )}
@@ -432,11 +432,11 @@ export const DoctorListing: React.FC<DoctorListingProps> = ({
                           onClick={() => onBookDoctor(doctor, 'video')}
                           className={`w-full py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer border ${
                             supportsClinic
-                              ? 'bg-white hover:bg-slate-50 text-[#28328c] border-slate-200'
-                              : 'bg-[#28328c] hover:bg-[#1f276f] text-white'
+                              ? 'bg-white hover:bg-blue-50 text-[#1e3a8a] border-slate-200'
+                              : 'bg-gradient-to-r from-[#1e3a8a] to-[#0284c7] text-white'
                           }`}
                         >
-                          <Video className="w-3.5 h-3.5 text-[#14bef0]" />
+                          <Video className="w-3.5 h-3.5 text-[#0284c7]" />
                           <span>Video Consult (₹{doctor.videoConsultFee})</span>
                         </button>
                       )}
@@ -444,7 +444,7 @@ export const DoctorListing: React.FC<DoctorListingProps> = ({
                       <button
                         id={`view-profile-btn-${doctor.id}`}
                         onClick={() => onViewDoctorProfile(doctor)}
-                        className="w-full text-center text-xs font-semibold text-slate-500 hover:text-slate-800 transition-colors pt-1 cursor-pointer"
+                        className="w-full text-center text-xs font-semibold text-slate-500 hover:text-[#1e3a8a] transition-colors pt-1 cursor-pointer"
                       >
                         View Full Profile & Timings
                       </button>

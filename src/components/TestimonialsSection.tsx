@@ -63,7 +63,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
       treatment: newTreatment,
       comment: newComment,
       verified: true,
-      avatarBg: 'bg-emerald-100 text-emerald-700',
+      avatarBg: 'bg-blue-100 text-[#1e3a8a]',
     };
 
     setAllReviews([newTestimonial, ...allReviews]);
@@ -80,11 +80,11 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold mb-2 border border-emerald-200">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-[#1e3a8a] text-xs font-bold mb-2 border border-blue-200">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#0284c7]" />
               <span>100% Genuine Patient Stories</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0f172a] tracking-tight">
               What Patients Say About Our Doctors
             </h2>
             <p className="text-sm text-slate-500 mt-1 max-w-xl">
@@ -109,7 +109,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
             <button
               id="open-write-review-modal-btn"
               onClick={() => setShowReviewModal(true)}
-              className="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer shadow-xs"
+              className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#1e3a8a] to-[#0284c7] hover:from-[#172554] hover:to-[#0369a1] text-white text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer shadow-md shadow-blue-950/20"
             >
               <Plus className="w-3.5 h-3.5" />
               <span>Write Review</span>
@@ -126,8 +126,8 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
               onClick={() => setSelectedFilter(spec)}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer border ${
                 selectedFilter === spec
-                  ? 'bg-[#28328c] text-white border-[#28328c] shadow-xs'
-                  : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
+                  ? 'bg-[#1e3a8a] text-white border-[#1e3a8a] shadow-xs'
+                  : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-blue-50'
               }`}
             >
               {spec}
@@ -141,7 +141,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
             <div
               key={item.id}
               id={`testimonial-card-${item.id}`}
-              className="bg-slate-50/60 rounded-2xl p-6 border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-blue-200 transition-all flex flex-col justify-between"
+              className="bg-slate-50/50 rounded-2xl p-6 border border-slate-200 shadow-2xs hover:shadow-md hover:border-blue-300 transition-all flex flex-col justify-between"
             >
               <div className="space-y-3">
                 
@@ -153,8 +153,8 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                     ))}
                   </div>
                   {item.verified && (
-                    <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-100/60 px-2 py-0.5 rounded-md">
-                      <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                    <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#0284c7] bg-blue-50 px-2 py-0.5 rounded-md border border-blue-100">
+                      <CheckCircle2 className="w-3 h-3 text-[#0284c7]" />
                       Verified Patient
                     </span>
                   )}
@@ -172,7 +172,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
               </div>
 
               {/* Patient and Doctor Footer */}
-              <div className="mt-6 pt-4 border-t border-slate-200/80 space-y-3">
+              <div className="mt-6 pt-4 border-t border-slate-200 space-y-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2.5">
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs ${item.avatarBg}`}>
@@ -189,12 +189,12 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                 <div className="bg-white rounded-xl p-2.5 border border-slate-200 flex items-center justify-between">
                   <div>
                     <span className="text-[10px] text-slate-400 font-medium block">Consulted Doctor:</span>
-                    <strong className="text-xs text-[#28328c] block">{item.doctorName}</strong>
+                    <strong className="text-xs text-[#1e3a8a] block">{item.doctorName}</strong>
                     <span className="text-[10px] text-slate-500">{item.doctorSpecialty}</span>
                   </div>
                   <button
                     onClick={() => onBookSpecificDoctor(item.doctorName)}
-                    className="px-2.5 py-1.5 rounded-lg bg-blue-50 hover:bg-blue-100 text-[#28328c] text-[11px] font-bold transition-colors cursor-pointer"
+                    className="px-2.5 py-1.5 rounded-lg bg-blue-50 hover:bg-blue-100 text-[#1e3a8a] text-[11px] font-bold transition-colors cursor-pointer"
                   >
                     Book Doctor
                   </button>
@@ -306,7 +306,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                   </button>
                   <button
                     type="submit"
-                    className="px-5 py-2 rounded-xl bg-[#28328c] text-white font-bold hover:bg-[#1f276f]"
+                    className="px-5 py-2 rounded-xl bg-gradient-to-r from-[#1e3a8a] to-[#0284c7] text-white font-bold hover:from-[#172554] hover:to-[#0369a1] shadow-sm cursor-pointer"
                   >
                     Post Testimonial
                   </button>
